@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow - Student Productivity Dashboard</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h2>StudyFlow</h2>
+                <span>Student Productivity</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <p class="menu-title">MAIN MENU</p>
+
+            <a class="nav-item active" href="#">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a class="nav-item" href="#">
+                <i class="fa-solid fa-book"></i>
+                Subjects
+            </a>
+
+            <a class="nav-item" href="#">
+                <i class="fa-solid fa-list-check"></i>
+                Assignments
+            </a>
+
+            <a class="nav-item" href="#">
+                <i class="fa-solid fa-calendar"></i>
+                Deadlines
+            </a>
+
+            <a class="nav-item" href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Progress
+            </a>
+
+            <p class="menu-title">SYSTEM</p>
+
+            <a class="nav-item" href="#">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+
+        <div class="profile">
+
+            <div class="avatar">H</div>
+
+            <div>
+                <strong>Hareni</strong>
+                <small>Student</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search assignments...">
+
+            </div>
+
+            <div class="top-right">
+
+                <span class="date">
+                    October 7, 2026
+                </span>
+
+                <i class="fa-regular fa-bell"></i>
+
+                <div class="user">
+                    <div class="avatar">H</div>
+
+                    <div>
+                        <strong>Hareni</strong>
+                        <small>Student</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- WELCOME -->
+            <div class="welcome">
+
+                <div>
+                    <p>WEDNESDAY, OCTOBER 7, 2026</p>
+
+                    <h1>
+                        Good Morning, Hareni 👋
+                    </h1>
+
+                    <span>
+                        Stay focused and complete your goals today.
+                    </span>
+                </div>
+
+                <button class="add-btn" id="openModal">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Assignment
+                </button>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="icon purple">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <p>Total Assignments</p>
+
+                    <h2 id="totalCount">3</h2>
+
+                    <small>All assignments</small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="icon orange">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <p>Pending</p>
+
+                    <h2 id="pendingCount">1</h2>
+
+                    <small>Need attention</small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="icon blue">
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+
+                    <p>In Progress</p>
+
+                    <h2 id="progressCount">1</h2>
+
+                    <small>Currently working</small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <p>Completed</p>
+
+                    <h2 id="completedCount">1</h2>
+
+                    <small>Great progress!</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+
+                <!-- ASSIGNMENTS -->
+                <div class="panel assignments">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>My Assignments</h2>
+                            <p>Manage and track your academic tasks</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="toolbar">
+
+                        <div class="filters">
+
+                            <button
+                                class="filter active"
+                                data-filter="All">
+                                All
+                            </button>
+
+                            <button
+                                class="filter"
+                                data-filter="Pending">
+                                Pending
+                            </button>
+
+                            <button
+                                class="filter"
+                                data-filter="In Progress">
+                                In Progress
+                            </button>
+
+                            <button
+                                class="filter"
+                                data-filter="Completed">
+                                Completed
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="assignmentList"></div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN -->
+                <div class="right-column">
+
+
+                    <!-- PRODUCTIVITY -->
+                    <div class="panel productivity">
+
+                        <h2>Productivity</h2>
+
+                        <p>Your overall progress</p>
+
+                        <div class="progress-circle">
+
+                            <div>
+                                <strong id="productivity">
+                                    33%
+                                </strong>
+
+                                <span>Completed</span>
+                            </div>
+
+                        </div>
+
+                        <div class="progress-details">
+
+                            <span>
+                                <b class="dot green"></b>
+                                Completed
+                            </span>
+
+                            <strong id="completedText">1</strong>
+
+                            <span>
+                                <b class="dot blue"></b>
+                                In Progress
+                            </span>
+
+                            <strong id="progressText">1</strong>
+
+                            <span>
+                                <b class="dot orange"></b>
+                                Pending
+                            </span>
+
+                            <strong id="pendingText">1</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DEADLINES -->
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Upcoming Deadlines</h2>
+                                <p>Important upcoming tasks</p>
+                            </div>
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                        </div>
+
+                        <div id="deadlineList"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBJECTS -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Subject Overview</h2>
+                        <p>Track your progress by subject</p>
+                    </div>
+
+                </div>
+
+                <div id="subjectGrid" class="subjects"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Assignment</h2>
+                <p>Create a new study task</p>
+            </div>
+
+            <button id="closeModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="assignmentForm">
+
+            <label>
+                Subject
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Web Technology"
+                    required>
+            </label>
+
+
+            <label>
+                Assignment
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="HTML Forms"
+                    required>
+            </label>
+
+
+            <label>
+                Description
+                <textarea
+                    id="description"
+                    placeholder="Assignment description">
+                </textarea>
+            </label>
+
+
+            <div class="form-row">
+
+                <label>
+                    Deadline
+                    <input
+                        type="date"
+                        id="deadline"
+                        required>
+                </label>
+
+                <label>
+                    Priority
+
+                    <select id="priority">
+
+                        <option>Low</option>
+                        <option selected>Medium</option>
+                        <option>High</option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <label>
+                Status
+
+                <select id="status">
+
+                    <option>Pending</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+
+                </select>
+
+            </label>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    type="button"
+                    id="cancelModal">
+                    Cancel
+                </button>
+
+                <button type="submit">
+                    Add Assignment
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    Assignment added successfully!
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+total 24
+drwxr-xr-x 6 studio studio 4096 Oct  8 07:47 .
+drwxr-xr-x 3 studio studio 4096 Oct  8 07:32 ..
+drwxr-xr-x 3 studio studio 4096 Oct  8 07:32 .vscode
+drwxr-xr-x 3 studio studio 4096 Oct  7 15:08 backend
+drwxr-xr-x 2 studio studio 4096 Oct  7 15:09 database
+drwxr-xr-x 2 studio studio 4096 Oct  7 15:03 frontend
+-rw-r--r-- 1 studio studio    0 Oct  8 07:47 output.txt
